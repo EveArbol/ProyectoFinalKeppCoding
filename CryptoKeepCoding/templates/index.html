@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/style.css">
+    <title>CryptoKeepCoding</title>
+</head>
+<body onload="onload()">
+    <header class="fixed-header">
+        <h1>myCrypto</h1>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md">
+                <table id="movements" class="table table-bordered">
+                    <tr>
+                      <th>Fecha</th>
+                      <th>Hora</th>
+                      <th>From</th>
+                      <th>Cantidad</th>
+                      <th>To</th>
+                      <th>Cantidad</th>
+                    </tr>
+                    <tfoot>
+                    </tfoot>
+                </table>
+            </div>
+            <div class="col-3">
+                <table id="status" class="table table-bordered">
+                    <tr>
+                      <th>Invertido</th>
+                      <td id="invested"></td>
+                    </tr>
+                    <tr>
+                        <th>Recuperado</th>
+                        <td id="recovered"></td>
+                    </tr>
+                    <tr>
+                        <th>V. de compra</th>
+                        <td id="purchase-value"></td>
+                    </tr>
+                    <tr>
+                        <th>V. actual</th>
+                        <td id="current-value"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="row justify-content-end">
+            <div class="col-2">
+                <button onclick="showPurchase()">
+                    +
+               </button>
+            </div>
+        </div>
+        <div id="purchase" hidden>
+            <div class="row">
+                <div class="col-6">
+                    <label for="from">From:</label>
+                    <select name="from" id="from_currency" onchange="disablePurchaseButton()">
+                        <option disabled selected value></option>
+                    </select>
+                </div>
+                <div class="col-5 justify-content-end">
+                    <label for="to">To:</label>
+                    <select name="to" id="to_currency" onchange="disablePurchaseButton()">
+                        <option disabled selected value></option>
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <label for="q-from">Q:</label>
+                    <input type="number" id="q-from" name="q-from" onchange="disablePurchaseButton()">
+                    <button onclick="calculateConversion()">
+                        <img src="../static/images/calculator.svg" width="20">
+                   </button>
+                </div>
+                <div class="col-3 text">
+                    <label for="q-to">Q:</label>
+                    <input type="text" id="q-to" name="q-to" readonly>
+                </div>
+            </div>
+            <div class="row justify-content-end">
+                <div class="col-6">
+                    <label for="pu">P.U.:</label>
+                    <input type="text" id="pu" name="pu" readonly>
+                </div>
+            </div>
+            <div class="row justify-content-end">
+                <div class="col-5">
+                    <button id="purchase-button" onclick="makePurchase()" disabled>
+                        OK
+                   </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="fixed-footer">
+        <span class="creative-commons">CC</span> 
+        <span>Todos los derechos reservados 2023</span>
+    </footer>
+    <script src="../static/js/index.js"></script>
+</body>
+</html>
